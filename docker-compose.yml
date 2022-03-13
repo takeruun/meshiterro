@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 3316:3306
+
+  meshiterro:
+    build: .
+    volumes:
+      - .:/meshiterro
+      - bundle:/usr/local/bundle
+    command: ash -c "rm -f /meshiterro/tmp/pids/server.pid && rails s -b '0.0.0.0'"
+    depends_on:
+      - db
+    ports:
+      - 8000:8000
+
+volumes:
+  bundle:
+  mysql-data:

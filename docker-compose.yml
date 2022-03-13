@@ -3,8 +3,6 @@ services:
   db:
     image: mysql:8.0
     environment:
-      MYSQL_USER: meshiterro
-      MYSQL_PASSWORD: password
       MYSQL_ALLOW_EMPTY_PASSWORD: true
     volumes:
       - mysql-data:/var/lib/mysql

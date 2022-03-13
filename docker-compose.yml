@@ -3,8 +3,9 @@ services:
   db:
     image: mysql:8.0
     environment:
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: meshiterro
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
     volumes:
       - mysql-data:/var/lib/mysql
     ports:
@@ -19,7 +20,7 @@ services:
     depends_on:
       - db
     ports:
-      - 8000:8000
+      - 3000:3000
 
 volumes:
   bundle:
